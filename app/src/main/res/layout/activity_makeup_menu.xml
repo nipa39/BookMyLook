@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".MakeupMenu">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/eyemakup"
+        android:background="#ffb6c1"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:text="Categories"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:background="#ffb6c1"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/vintage2">
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/imakeup"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="EyeMakeup"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="#33b5"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="BridalMakeup"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="#33b5"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="FaceContour"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="#33b5"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="PartyMakeup"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:background="#33b5"
+            />
+
+    </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
