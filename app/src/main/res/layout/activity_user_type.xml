@@ -11,26 +11,36 @@
     android:background="@drawable/vintage5"
     tools:context=".MakeupMenu">
 
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Sign in as"
+    android:textSize="40dp"
+    android:layout_marginBottom="40dp"
+    android:textColor="#c71585"
+    android:textStyle="bold"/>
     <Button
         android:id="@+id/sp"
+        android:textColor="#c71585"
         android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Service providers"
-        android:textStyle="bold"
-        android:textSize="40dp"
-        android:background="#ffe"
+        android:textStyle="italic"
+        android:textSize="30dp"
+        android:background="#ffb6c1"
         android:layout_marginBottom="40dp"/>
 
     <Button
+
+        android:textColor="#c71585"
         android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:text="Users"
-        android:textStyle="bold"
-        android:textSize="40dp"
-        android:background="#ffe"/>
+        android:textStyle="italic"
+        android:textSize="30dp"
+        android:background="#ffb6c1"/>
 
 
 
