@@ -40,7 +40,7 @@
             android:id="@+id/imakeup"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="EyeMakeup"
+            android:text="Eye Makeup"
             android:textSize="25dp"
             android:textStyle="bold"
             android:background="#33b5"
@@ -48,7 +48,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="BridalMakeup"
+            android:text="Bridal Makeup"
             android:textSize="25dp"
             android:textStyle="bold"
             android:background="#33b5"
@@ -56,7 +56,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="FaceContour"
+            android:text="Face Contour"
             android:textSize="25dp"
             android:textStyle="bold"
             android:background="#33b5"
@@ -64,7 +64,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="PartyMakeup"
+            android:text="Party Makeup"
             android:textSize="25dp"
             android:textStyle="bold"
             android:background="#33b5"
