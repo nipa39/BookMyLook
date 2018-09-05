@@ -50,7 +50,7 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="80"
+                android:layout_height="80dp"
                 android:text="SpecialOffers"
                 android:textSize="30dp"
                 android:textStyle="bold"

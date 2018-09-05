@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="@drawable/vintage7"
+    android:background="@drawable/vinytage8"
     tools:context=".MakeupMenu"
     >
 
