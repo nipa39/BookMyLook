@@ -20,8 +20,6 @@ public class Appoinment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appoinment);
         dp=(DatePicker) findViewById(R.id.datepicker);
-        //s=dp.getDayOfMonth()+"/"+(dp.getMonth()+1)+"/"+dp.getYear();
-       // Toast.makeText(this,s,Toast.LENGTH_SHORT).show();
         Calendar today = Calendar.getInstance();
 
         dp.init(
