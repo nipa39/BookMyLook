@@ -14,17 +14,15 @@ public class MakeupMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_makeup_menu);
 
-        b1=findViewById(R.id.imakeup);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String menu=b1.getText().toString();
-                Intent i;
-                i=new Intent(getApplicationContext(), EyeMakeupCategory.class);
-                i.putExtra("MENU",menu);
-                startActivity(i);
-            }
-        });
+    b1=findViewById(R.id.imakeup);
+    b1.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent i;
+            i=new Intent(getApplicationContext(), EyeMakeupCategory.class);
+            startActivity(i);
+        }
+    });
 
     }
 }
