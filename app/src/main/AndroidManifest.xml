@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MySchedule">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,10 +24,15 @@
         <activity android:name=".ProviderPage" />
         <activity android:name=".ProviderHomePage" />
         <activity android:name=".Appoinment" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MySchedule" />
         <activity android:name=".MyService" />
         <activity android:name=".MyWorks" />
-        <activity android:name=".MyReviews"></activity>
+        <activity android:name=".MyReviews" />
+        <activity
+            android:name=".ProviderPg2"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MyOffers"></activity>
     </application>
 
 </manifest>

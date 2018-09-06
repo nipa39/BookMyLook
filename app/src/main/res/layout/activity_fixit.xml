@@ -72,6 +72,7 @@
                     android:layout_width="182dp"
                     android:layout_height="wrap_content"
                     android:editable="false"
+                    android:enabled="false"
                     android:padding="15dp"
                     android:textColor="#0a0006"
                     android:textStyle="bold"
@@ -94,10 +95,10 @@
             android:layout_width="182dp"
             android:layout_height="wrap_content"
             android:editable="true"
-            android:textStyle="bold"
             android:enabled="false"
             android:padding="15dp"
-            android:textColor="#0a0006"/>
+            android:textColor="#0a0006"
+            android:textStyle="bold" />
 </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -117,6 +118,7 @@
                     android:layout_width="182dp"
                     android:layout_height="wrap_content"
                     android:editable="false"
+                    android:enabled="false"
                     android:padding="15dp"
                     android:textColor="#0a0006"
                     android:textStyle="bold" />
@@ -133,14 +135,16 @@
                 android:layout_height="wrap_content"
                 android:text="Appointment time:"
                 android:textSize="25dp" />
+
     <EditText
         android:id="@+id/time"
         android:layout_width="182dp"
         android:layout_height="wrap_content"
+        android:editable="false"
+        android:enabled="false"
         android:padding="15dp"
-        android:editable="true"
-        android:textStyle="bold"
-        android:textColor="#0a0006"/>
+        android:textColor="#0a0006"
+        android:textStyle="bold" />
 </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,14 +158,16 @@
                 android:textStyle="bold"
                 android:id="@+id/totalTv"
                 />
+
                 <EditText
                     android:id="@+id/total"
                     android:layout_width="182dp"
                     android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:enabled="false"
                     android:padding="15dp"
-                    android:editable="true"
-                    android:textStyle="bold"
-                    android:textColor="#0a0006"/>
+                    android:textColor="#0a0006"
+                    android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -174,14 +180,16 @@
                 android:textSize="25dp"
                 android:id="@+id/advTv"
                 />
+
                 <EditText
                     android:id="@+id/adv"
                     android:layout_width="182dp"
                     android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:enabled="false"
                     android:padding="15dp"
-                    android:editable="true"
-                    android:textStyle="bold"
-                    android:textColor="#0a0006"/>
+                    android:textColor="#0a0006"
+                    android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -197,14 +205,16 @@
                 android:layout_marginBottom="30dp"
                 android:id="@+id/grossTv"
                 />
+
                 <EditText
                     android:id="@+id/gross"
                     android:layout_width="182dp"
                     android:layout_height="wrap_content"
+                    android:editable="false"
+                    android:enabled="false"
                     android:padding="15dp"
-                    android:editable="true"
-                    android:textStyle="bold"
-                    android:textColor="#0a0006"/>
+                    android:textColor="#0a0006"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
