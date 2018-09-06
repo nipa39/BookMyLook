@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.uzma.bookmylook.ProviderPg2"
+    tools:showIn="@layout/app_bar_main">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/persona"
+                android:layout_marginBottom="5dp"
+                />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:text="Search Schedule By date"
+        android:textSize="35dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:background="#ffb6c1"
+        android:layout_marginBottom="10dp"/>
+
+            <DatePicker
+                android:id="@+id/datepicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:datePickerMode="calendar"></DatePicker>
+            <Button
+                android:id="@+id/search"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Search"
+                android:textSize="25dp"
+                android:background="#f6546a"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

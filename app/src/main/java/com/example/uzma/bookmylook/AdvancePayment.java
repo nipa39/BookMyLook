@@ -1,5 +1,6 @@
 package com.example.uzma.bookmylook;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,10 @@ public class AdvancePayment extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(AdvancePayment.this, "Thankyou for your order!Your appointment will b confirmed once the advance is received through email.", Toast.LENGTH_SHORT).show();
+                Intent i;
+                i = new Intent(getApplicationContext(), ProviderPg2.class);
+                startActivity(i);
+
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
@@ -35,3 +40,4 @@ public class AdvancePayment extends AppCompatActivity {
         });
     }
 }
+
