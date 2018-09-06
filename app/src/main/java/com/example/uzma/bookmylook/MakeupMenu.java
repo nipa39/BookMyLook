@@ -18,10 +18,8 @@ public class MakeupMenu extends AppCompatActivity {
     b1.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            String menu=b1.getText().toString();
             Intent i;
             i=new Intent(getApplicationContext(), EyeMakeupCategory.class);
-            i.putExtra("MENU",menu);
             startActivity(i);
         }
     });
