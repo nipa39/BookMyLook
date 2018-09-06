@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/icons8service30"
+            android:title="My Services" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/icons8barberscissors24"
+            android:title="My Works" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/icons8goodquality64"
+            android:title="Service Reviews" />
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/icons8discountfilled50"
+            android:title="My Offers" />
+
+    </group>
+
+
+
+</menu>
