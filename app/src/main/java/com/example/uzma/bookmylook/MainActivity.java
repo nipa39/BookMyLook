@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i;
-                i=new Intent(getApplicationContext(), MakeupMenu.class);
+                i=new Intent(getApplicationContext(), CommonRegistration.class);
                 startActivity(i);
             }
         });
