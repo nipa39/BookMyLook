@@ -24,49 +24,53 @@ import java.util.ArrayList;
 public class ProviderProfile extends AppCompatActivity {
 
     ListView listView;
-    //   SearchView sv;
     String username;
-    FirebaseDatabase database;
-    DatabaseReference ref;
+    // FirebaseDatabase database;
+    // DatabaseReference ref;
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
+    Customers customers;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_profile);
 
-        // username=getIntent().getStringExtra("UserName");
+        username=getIntent().getStringExtra("ProviderName");
+
+        // Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
 
 
+        customers=new Customers();
 
         listView = findViewById(R.id.listView1);
-        database = FirebaseDatabase.getInstance();
-        // ref=database.getReference("Customers").child();
+        //  database = FirebaseDatabase.getInstance();
+        //  ref=database.getReference("Customers").child(username);
         list=new ArrayList<>();
         adapter=new ArrayAdapter<String>(this,R.layout.user_info,R.id.userInfo,list);
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("hello");
-                for (DataSnapshot ds: dataSnapshot.getChildren())
-                {
-                    // user=ds.getValue(User.class);
+        FirebaseDatabase.getInstance().getReference("Customers").child(username)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot ds: dataSnapshot.getChildren())
+                        {
+                            customers=ds.getValue(Customers.class);
 
-                    // list.add(user.getName().toString());
-                }
-                listView.setAdapter(adapter);
-            }
+                            list.add(customers.getCustomername().toString()+"\n"+customers.getAppointment_date().toString()
+                                    +"\n"+customers.getAppointment_time().toString()+"\n"+customers.getBooked_service().toString());
+                        }
+                        listView.setAdapter(adapter);
+                    }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("errorindata");
-            }
-        });
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        System.out.println("errorindata");
+                    }
+                });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final String Parlourname = list.get(position);
+                //  final String Parlourname = list.get(position);
                 //Toast.makeText(getApplicationContext(),Parlourname+" "+position,Toast.LENGTH_LONG).show();
                 // Toast.makeText(getApplicationContext(), position+"", Toast.LENGTH_SHORT).show();
                 final DatabaseReference mDatabaseRef =FirebaseDatabase.getInstance().getReference("ServiceProviders");
@@ -97,4 +101,3 @@ public class ProviderProfile extends AppCompatActivity {
     }
 
 }
-

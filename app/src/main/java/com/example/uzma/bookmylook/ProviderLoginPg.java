@@ -20,6 +20,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ProviderLoginPg extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,12 +33,16 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
     private TextView t1;
     private ProgressDialog p1;
     private FirebaseAuth f1;
+    private User user;
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_login_pg);
 
         f1=FirebaseAuth.getInstance();
+
+        // f1=FirebaseAuth.getInstance();
 
       /*  if(f1.getCurrentUser()!=null){
             finish();
@@ -72,9 +80,30 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
                     public void onComplete(@NonNull Task<AuthResult> task){
                         p1.dismiss();
                         if(task.isSuccessful()){
-                            Toast.makeText(ProviderLoginPg.this, "Ok", Toast.LENGTH_SHORT).show();
-                            finish();
-                            startActivity(new Intent(getApplicationContext(),ProviderProfile.class));
+
+
+                            FirebaseDatabase.getInstance().getReference("ServiceProviders")
+                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    .addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            user=dataSnapshot.getValue(User.class);
+                                            username=user.getName();
+                                            Intent intent = new Intent(getApplicationContext(), ProviderProfile.class);
+                                            //  Toast.makeText(ProviderLoginPg.this,username, Toast.LENGTH_SHORT).show();
+                                            intent.putExtra("ProviderName",username);
+                                            startActivity(intent);
+                                            // Toast.makeText(ProviderLoginPg.this, username, Toast.LENGTH_SHORT).show();
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                            Toast.makeText(ProviderLoginPg.this, "Error", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+                            // Toast.makeText(ProviderLoginPg.this, "ok", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
@@ -88,8 +117,7 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
         }
         if(view==t1){
             finish();
-            startActivity(new Intent(this,CommonRegistration.class));
+            startActivity(new Intent(this,MainActivity.class));
         }
     }
 }
-

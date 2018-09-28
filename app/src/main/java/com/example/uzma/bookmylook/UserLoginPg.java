@@ -50,20 +50,7 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
         }*/
 
         f1=FirebaseAuth.getInstance();
-        FirebaseDatabase.getInstance().getReference("Users")
-                .child(f1.getCurrentUser().getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        user=dataSnapshot.getValue(User.class);
-                        username=user.getName();
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(UserLoginPg.this, "Error", Toast.LENGTH_SHORT).show();
-                    }
-                });
 
 
         p1= new ProgressDialog(this);
@@ -101,10 +88,25 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
                         if(task.isSuccessful()){
 
 
-                            Intent intent = new Intent(getApplicationContext(), Retrieve.class);
-                            Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
-                            intent.putExtra("UserName",username);
-                            startActivity(intent);
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(f1.getCurrentUser().getUid())
+                                    .addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            user=dataSnapshot.getValue(User.class);
+                                            username=user.getName();
+                                            Intent intent = new Intent(getApplicationContext(), Retrieve.class);
+                                            Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
+                                            intent.putExtra("UserName",username);
+                                            startActivity(intent);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+                                            Toast.makeText(UserLoginPg.this, "Error", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
                         }
                     }
                 });
