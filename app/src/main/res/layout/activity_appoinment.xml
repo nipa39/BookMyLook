@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    tools:context=".MakeupMenu"
+    tools:context=".Appoinment"
     android:background="#ffe4e1">
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Pick your suitable date"
-       android:gravity="center"
-       android:textSize="30dp"
-       android:layout_marginBottom="25dp"
-       android:textStyle="italic"
-       />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick your suitable date"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_marginBottom="25dp"
+        android:textStyle="italic"
+        />
     <DatePicker
         android:layout_marginLeft="20dp"
         android:layout_width="match_parent"

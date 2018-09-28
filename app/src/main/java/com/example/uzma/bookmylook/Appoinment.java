@@ -1,24 +1,33 @@
 package com.example.uzma.bookmylook;
 
+//Appointment er date fixation er pg (only user dekhte parbe eta) (user pg six)
+
 import android.content.Intent;
-import java.util.Calendar;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.DatePicker.OnDateChangedListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class Appoinment extends AppCompatActivity {
 
-    String menu,category,s;
+    String menu,category,s,sessionId,username,parlourname;
     Button b1;
     DatePicker dp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appoinment);
+
+        username=getIntent().getStringExtra("UserName");
+        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
+
+        parlourname=getIntent().getStringExtra("EXTRA_SESSION_ID");
+
+        sessionId=getIntent().getStringExtra("SelectedItems");
         dp=(DatePicker) findViewById(R.id.datepicker);
         Calendar today = Calendar.getInstance();
 
@@ -35,7 +44,7 @@ public class Appoinment extends AppCompatActivity {
                                 "Year: " + year + "\n" +
                                         "Month of Year: " + (monthOfYear+1) + "\n" +
                                         "Day of Month: " + dayOfMonth, Toast.LENGTH_SHORT).show();
-                 s=dayOfMonth+"-"+(monthOfYear+1)+"-"+year;
+                        s=dayOfMonth+"-"+(monthOfYear+1)+"-"+year;
 
                     }});
 
@@ -45,11 +54,13 @@ public class Appoinment extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i;
                 i=new Intent(getApplicationContext(), Fixit.class);
-                menu=getIntent().getStringExtra("MENU");
-                i.putExtra("MENU",menu);
-                category=getIntent().getStringExtra("CATEGORY");
+                // menu=getIntent().getStringExtra("MENU");
+                // i.putExtra("MENU",menu);
+                category=sessionId;
                 i.putExtra("CATEGORY",category);
                 i.putExtra("DATE",s);
+                i.putExtra("UserName",username);
+                i.putExtra("EXTRA_SESSION_ID",parlourname);
                 startActivity(i);
             }
         });

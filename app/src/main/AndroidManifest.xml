@@ -16,13 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MakeupMenu" />
-        <activity android:name=".EyeMakeupCategory" />
         <activity android:name=".Fixit" />
-        <activity android:name=".AdvancePayment" />
-        <activity android:name=".UserType" />
-        <activity android:name=".ProviderPage" />
-        <activity android:name=".ProviderHomePage" />
         <activity android:name=".Appoinment" />
         <activity android:name=".MySchedule" />
         <activity android:name=".MyService" />
@@ -32,7 +26,15 @@
             android:name=".ProviderPg2"
             android:label="BookMyLook"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MyOffers"></activity>
+        <activity android:name=".MyOffers" />
+        <activity android:name=".CommonRegistration" />
+        <activity android:name=".Retrieve" />
+        <activity android:name=".UserLoginPg" />
+        <activity android:name=".ProviderLoginPg" />
+        <activity android:name=".ImagesActivity" />
+        <activity android:name=".ProviderProfile" />
+        <activity android:name=".ProviderPicUpload" />
+        <activity android:name=".ParlourMenu"></activity>
     </application>
 
 </manifest>

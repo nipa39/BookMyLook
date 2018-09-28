@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/vintage8">
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registration"
+            android:textStyle="italic"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:id="@+id/txtreg"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:inputType="textEmailAddress"
+            android:id="@+id/editTextEmail"
+            android:hint="Enter your email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_margin="15dp"
+            android:inputType="textPassword"
+            android:id="@+id/editTextPassword"
+            android:hint="Enter your pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter your contact number"
+            android:id="@+id/edit_text_phone"
+            />
+        <EditText
+            android:layout_margin="15dp"
+            android:inputType="text"
+            android:id="@+id/editTextName"
+            android:hint="Enter your Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn1"
+
+            android:layout_marginLeft="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register User"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:textAlignment="center"
+            android:text="Already an user?? Sign in here"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:id="@+id/txtuser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn2"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register ServiceProvider"/>
+        <TextView
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="Already registered?? Sign in here"
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
