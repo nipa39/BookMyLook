@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/bml"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -16,25 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fixit" />
-        <activity android:name=".Appoinment" />
-        <activity android:name=".MySchedule" />
-        <activity android:name=".MyService" />
-        <activity android:name=".MyWorks" />
-        <activity android:name=".MyReviews" />
-        <activity
-            android:name=".ProviderPg2"
-            android:label="BookMyLook"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MyOffers" />
-        <activity android:name=".CommonRegistration" />
+        <activity android:name=".ProviderPicUpload" />
+        <activity android:name=".ImagesActivity" />
         <activity android:name=".Retrieve" />
+        <activity android:name=".MyServices" />
+        <activity android:name=".ParlourMenu" />
         <activity android:name=".UserLoginPg" />
         <activity android:name=".ProviderLoginPg" />
-        <activity android:name=".ImagesActivity" />
         <activity android:name=".ProviderProfile" />
-        <activity android:name=".ProviderPicUpload" />
-        <activity android:name=".ParlourMenu"></activity>
+        <activity android:name=".Fixit" />
+        <activity android:name=".Appointment" />
+        <activity android:name=".UserPicUpload" />
+        <activity android:name=".SharedMoments" />
+        <activity android:name=".EmailNotification" />
+        <activity android:name=".EditProfile" />
+        <activity android:name=".Rating" />
+        <activity android:name=".MyRatings" />
+        <activity android:name=".MyProfile" />
+        <activity android:name=".UpdateServices"></activity>
     </application>
 
 </manifest>

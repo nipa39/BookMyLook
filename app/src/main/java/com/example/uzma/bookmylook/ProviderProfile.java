@@ -2,15 +2,18 @@ package com.example.uzma.bookmylook;
 
 //Provider er homepage jekhane show korbe or all customer der booking er list
 
+//*******************
+
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -24,38 +27,158 @@ import java.util.ArrayList;
 public class ProviderProfile extends AppCompatActivity {
 
     ListView listView;
-    String username;
-    // FirebaseDatabase database;
-    // DatabaseReference ref;
+    String username,userid;
+   // FirebaseDatabase database;
+   // DatabaseReference ref;
     ArrayList<String> list;
+    ArrayList<String> list1;
     ArrayAdapter<String> adapter;
     Customers customers;
+    Button b1,b2;
+    TextView t1,t2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_profile);
 
-        username=getIntent().getStringExtra("ProviderName");
+        b1=findViewById(R.id.btserviced);
+        b2=findViewById(R.id.btnnotify);
+        t1=findViewById(R.id.txtlogout);
+        t2=findViewById(R.id.editprofile);
 
-        // Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
+        username=getIntent().getStringExtra("ProviderName");
+        userid=getIntent().getStringExtra("Uid");
+
+       Toast.makeText(this, "Hey "+username, Toast.LENGTH_SHORT).show();
 
 
         customers=new Customers();
 
         listView = findViewById(R.id.listView1);
-        //  database = FirebaseDatabase.getInstance();
-        //  ref=database.getReference("Customers").child(username);
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+      //  database = FirebaseDatabase.getInstance();
+      //  ref=database.getReference("Customers").child(username);
         list=new ArrayList<>();
-        adapter=new ArrayAdapter<String>(this,R.layout.user_info,R.id.userInfo,list);
-        FirebaseDatabase.getInstance().getReference("Customers").child(username)
+        list1=new ArrayList<>();
+        adapter=new ArrayAdapter<String>(this,R.layout.rowlayout,R.id.txt_lan,list);
+       FirebaseDatabase.getInstance().getReference("Customers").child(username)
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds: dataSnapshot.getChildren())
+                {
+                    customers=ds.getValue(Customers.class);
+
+                   list.add(customers.getCust_id().toString()+"\n"+customers.getCust_mail().toString()+"\n"+customers.getCustomername().toString()+"\n"+customers.getAppointment_date().toString()
+                   +"\n"+customers.getAppointment_time().toString()+"\n"+customers.getBooked_service().toString());
+                }
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("errorindata");
+            }
+        });
+
+
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItem=((CheckedTextView)view).getText().toString();
+                if(list1.contains(selectedItem)){
+                    list1.remove(selectedItem);
+                    // list.notifyDataSetChanged();//uncheck item
+                  //  Toast.makeText(ParlourMenu.this, "OK", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    list1.add(selectedItem);
+                }
+
+            }
+        });
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteCustomer();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                emailnotify();
+            }
+        });
+        t1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // mAuth.getCurrentUser().getEmail();
+                Toast.makeText(ProviderProfile.this, "Signed Out", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(new Intent(ProviderProfile.this,ProviderLoginPg.class));
+            }
+        });
+        t2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+                //  Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
+                intent.putExtra("Parlourname",username);
+
+                intent.putExtra("Uid",userid);
+                startActivity(intent);
+            }
+        });
+
+
+    }
+
+
+    public void emailnotify(){
+/*
+        for (String item:list1){
+            // items+="-"+item+" "+"\n";
+            String[] a = item.split("\n",0);
+            String cu_email=a[1];
+          //  Toast.makeText(this, cu_id, Toast.LENGTH_SHORT).show();
+            DatabaseReference drCust= FirebaseDatabase.getInstance().getReference("Customers").child(username).child(cu_id);
+
+
+        }*/
+        Intent intent=new Intent(getApplicationContext(),EmailNotification.class);
+
+        startActivity(intent);
+    }
+
+    public void deleteCustomer(){
+        Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
+       // String items="";
+        for (String item:list1){
+           // items+="-"+item+" "+"\n";
+            String[] a = item.split("\n",0);
+            String cu_id=a[0];
+          //  Toast.makeText(this, cu_id, Toast.LENGTH_SHORT).show();
+            DatabaseReference drCust= FirebaseDatabase.getInstance().getReference("Customers").child(username).child(cu_id);
+            drCust.removeValue();
+        }
+       /* if(list.contains(item)){
+            adapter.remove(item);
+        }*/
+
+       FirebaseDatabase.getInstance().getReference("Customers").child(username)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        list1.clear();
+                        list.clear();
                         for (DataSnapshot ds: dataSnapshot.getChildren())
                         {
                             customers=ds.getValue(Customers.class);
 
-                            list.add(customers.getCustomername().toString()+"\n"+customers.getAppointment_date().toString()
+                            list.add(customers.getCust_id().toString()+"\n"+customers.getCust_mail().toString()+"\n"+customers.getCustomername().toString()+"\n"+customers.getAppointment_date().toString()
                                     +"\n"+customers.getAppointment_time().toString()+"\n"+customers.getBooked_service().toString());
                         }
                         listView.setAdapter(adapter);
@@ -67,37 +190,9 @@ public class ProviderProfile extends AppCompatActivity {
                     }
                 });
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //  final String Parlourname = list.get(position);
-                //Toast.makeText(getApplicationContext(),Parlourname+" "+position,Toast.LENGTH_LONG).show();
-                // Toast.makeText(getApplicationContext(), position+"", Toast.LENGTH_SHORT).show();
-                final DatabaseReference mDatabaseRef =FirebaseDatabase.getInstance().getReference("ServiceProviders");
-
-                //    Query query=mDatabaseRef.orderByChild("name").equalTo(Parlourname);
-
-                mDatabaseRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-
-                        for (DataSnapshot data:dataSnapshot.getChildren()) {
-                            //  user = data.getValue(User.class);
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-
-                });
-
-            }
-        });
-
-
+     //   adapter.notifyDataSetChanged();
     }
+
+
 
 }

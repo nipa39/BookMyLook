@@ -7,19 +7,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center"
-    tools:context=".Appoinment"
+    tools:context=".Appointment"
     android:background="#ffe4e1">
     <TextView
+        android:textColor="#ff0080"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pick your suitable date"
+        android:text="Pick a suitable date"
         android:gravity="center"
         android:textSize="30dp"
         android:layout_marginBottom="25dp"
-        android:textStyle="italic"
+        android:textStyle="bold"
         />
     <DatePicker
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="7dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/datepicker"
@@ -35,7 +36,7 @@
         android:layout_height="70dp"
         android:text="Proceed"
         android:textSize="25dp"
-        android:background="#f6546a"
+        android:background="#ff0080"
         android:textStyle="bold"
         />
 

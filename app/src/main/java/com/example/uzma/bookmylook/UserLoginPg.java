@@ -1,10 +1,12 @@
 package com.example.uzma.bookmylook;
 
+//user er login pg
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +33,7 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
     private FirebaseAuth f1;
     //private FirebaseDatabase d1;
     User user;
-    String username;
+    String username,usermail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +51,7 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
 
         }*/
 
-        f1=FirebaseAuth.getInstance();
+        f1= FirebaseAuth.getInstance();
 
 
 
@@ -63,6 +65,15 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
         t1.setOnClickListener(this);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
     private void userlog(){
         String email = e1.getText().toString().trim();
         String pass = e2.getText().toString().trim();
@@ -95,9 +106,11 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             user=dataSnapshot.getValue(User.class);
                                             username=user.getName();
+                                            usermail=user.getEmail();
                                             Intent intent = new Intent(getApplicationContext(), Retrieve.class);
-                                            Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
+                                          //  Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
                                             intent.putExtra("UserName",username);
+                                            intent.putExtra("Email",usermail);
                                             startActivity(intent);
                                         }
 

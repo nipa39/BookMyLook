@@ -28,9 +28,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-//Pic upload korar pg(Provider end e multiple pics upload er pg during her registration)
-
-public class ProviderPicUpload extends AppCompatActivity implements View.OnClickListener{
+public class UserPicUpload extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView imageView;
     private Button btchoose,btup;
@@ -44,23 +42,22 @@ public class ProviderPicUpload extends AppCompatActivity implements View.OnClick
     private EditText mEdittextfilename;
 
     private TextView showup,seeList;
-    String test,uid;
+    String test;
 
 
     private Uri filePath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_provider_pic_upload);
+        setContentView(R.layout.activity_user_pic_upload);
         test=getIntent().getStringExtra("EXTRA_SESSION_ID");
-        uid=getIntent().getStringExtra("Uid");
 
         mAuth= FirebaseAuth.getInstance();
 
         FirebaseUser usr =mAuth.getCurrentUser();
 
-        storageReference = FirebaseStorage.getInstance().getReference("Works").child(test);
-        mDatabaseRef= FirebaseDatabase.getInstance().getReference("Works").child(test);
+        storageReference = FirebaseStorage.getInstance().getReference("Moments");
+        mDatabaseRef= FirebaseDatabase.getInstance().getReference("Moments");
 
         imageView=findViewById(R.id.imageView);
         mEdittextfilename=findViewById(R.id.ed1);
@@ -116,23 +113,23 @@ public class ProviderPicUpload extends AppCompatActivity implements View.OnClick
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
 
-                            Toast.makeText(ProviderPicUpload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserPicUpload.this, "File Uploaded", Toast.LENGTH_SHORT).show();
                             Upload upload=new Upload(mEdittextfilename.getText().toString().trim(),
                                     taskSnapshot.getDownloadUrl().toString());
                             String uploadId = mDatabaseRef.push().getKey();
 
                             mDatabaseRef.child(uploadId).setValue(upload);
 
-                         //   mDatabaseRef.child(mAuth.getCurrentUser().getUid())
-                              //      .child("Pictures").setValue(upload);
-                                   // .setValue(upload);
+                            //   mDatabaseRef.child(mAuth.getCurrentUser().getUid())
+                            //      .child("Pictures").setValue(upload);
+                            // .setValue(upload);
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
                             progressDialog.dismiss();
-                            Toast.makeText(ProviderPicUpload.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserPicUpload.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -151,8 +148,8 @@ public class ProviderPicUpload extends AppCompatActivity implements View.OnClick
 
     private void openImagesActivity(){
         Intent i=new Intent(this,ImagesActivity.class);
-       // Intent i=new Intent(this,ShowProviderList.class);
-       // startActivity(i);
+        // Intent i=new Intent(this,ShowProviderList.class);
+        // startActivity(i);
     }
 
 
@@ -166,10 +163,7 @@ public class ProviderPicUpload extends AppCompatActivity implements View.OnClick
 
         }
         else if(view==showup){
-            Intent i=new Intent(this,ProviderProfile.class);
-            i.putExtra("ProviderName",test);
-            i.putExtra("Uid",uid);
-          //  Toast.makeText(this, uid, Toast.LENGTH_SHORT).show();
+            Intent i=new Intent(this,SharedMoments.class);
             startActivity(i);
 
         }

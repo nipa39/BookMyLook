@@ -1,15 +1,15 @@
 package com.example.uzma.bookmylook;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,20 +24,38 @@ public class Retrieve extends AppCompatActivity {
 
     ListView listView;
     SearchView sv;
-    String username;
+    String username,mail;
     FirebaseDatabase database;
     DatabaseReference ref;
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
     User user;
-    // UserId userId;
+    TextView share;
+   // UserId userId;
     String id1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieve);
 
+        share=findViewById(R.id.txtshare);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserPicUpload.class);
+                intent.putExtra("EXTRA_SESSION_ID", id1);
+                //  Toast.makeText(Retrieve.this,username, Toast.LENGTH_SHORT).show();
+                intent.putExtra("UserName",username);
+
+                // Toast.makeText(Retrieve.this, id1, Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+            }
+        });
+
         username=getIntent().getStringExtra("UserName");
+        mail=getIntent().getStringExtra("Email");
+
+
 
         sv=findViewById(R.id.sc1);
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -54,7 +72,7 @@ public class Retrieve extends AppCompatActivity {
         });
 
         user=new User();
-        //  userId=new UserId();
+      //  userId=new UserId();
         listView = findViewById(R.id.listView1);
         database = FirebaseDatabase.getInstance();
         ref=database.getReference("ServiceProviders");
@@ -85,10 +103,10 @@ public class Retrieve extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final String Parlourname = list.get(position);
                 //Toast.makeText(getApplicationContext(),Parlourname+" "+position,Toast.LENGTH_LONG).show();
-                // Toast.makeText(getApplicationContext(), position+"", Toast.LENGTH_SHORT).show();
-                final DatabaseReference mDatabaseRef =FirebaseDatabase.getInstance().getReference("ServiceProviders");
+               // Toast.makeText(getApplicationContext(), position+"", Toast.LENGTH_SHORT).show();
+                final DatabaseReference mDatabaseRef = FirebaseDatabase.getInstance().getReference("ServiceProviders");
 
-                //    Query query=mDatabaseRef.orderByChild("name").equalTo(Parlourname);
+            //    Query query=mDatabaseRef.orderByChild("name").equalTo(Parlourname);
 
                 mDatabaseRef.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -100,20 +118,21 @@ public class Retrieve extends AppCompatActivity {
                             if(Parlourname == user.getName())
                             {
                                 //userId=data.getValue(UserId.class);
-                                //userId=data.getChildren(UserId.class);
-                                // id1 = data.getChildren().iterator().next().getKey();
-                                //  userId=data.getChildren().iterator().next().getValue(UserId.class);
-                                //  id1=userId.getUserid();
-                                // System.out.println(id1);
+                               //userId=data.getChildren(UserId.class);
+                               // id1 = data.getChildren().iterator().next().getKey();
+                              //  userId=data.getChildren().iterator().next().getValue(UserId.class);
+                              //  id1=userId.getUserid();
+                               // System.out.println(id1);
 
-                                // id1=user.getName();
+                               // id1=user.getName();
 
                                 id1=user.getName();
 
                                 Intent intent = new Intent(getApplicationContext(), ImagesActivity.class);
                                 intent.putExtra("EXTRA_SESSION_ID", id1);
-                                Toast.makeText(Retrieve.this,username, Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(Retrieve.this,username, Toast.LENGTH_SHORT).show();
                                 intent.putExtra("UserName",username);
+                                intent.putExtra("Email",mail);
                                 // Toast.makeText(Retrieve.this, id1, Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
 
@@ -131,8 +150,8 @@ public class Retrieve extends AppCompatActivity {
 
                 });
 //                Toast.makeText(getApplicationContext(),Parlourname+" "+id1,Toast.LENGTH_LONG).show();
-                //   Toast.makeText(Retrieve.this,"This id "+id1, Toast.LENGTH_SHORT).show();
-                // Toast.makeText(Retrieve.this,list.get(position), Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(Retrieve.this,"This id "+id1, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Retrieve.this,list.get(position), Toast.LENGTH_SHORT).show();
 
             }
         });

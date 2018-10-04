@@ -3,20 +3,44 @@ package com.example.uzma.bookmylook;
 //Provider er homepage e customer der booking er list er jonno created class
 //use kora hoise fixit pg e jokhn place your booking button ta click kore
 //tokhn eta firebase e oi cust er shob booking info parlour er under e save kore
+//****************
 public class Customers {
-    public String customername, appointment_date, appointment_time, booked_service;
+    public String cust_id,cust_mail,customername, appointment_date, appointment_time, booked_service;
 
     public Customers() {
 
     }
 
-    public Customers(String s1, String s2, String s3, String s4) {
 
+
+    public Customers(String s0, String s5, String s1, String s2, String s3, String s4) {
+
+        cust_id=s0;
+        cust_mail=s5;
         customername = s1;
         appointment_date = s2;
+
         appointment_time = s3;
         booked_service = s4;
+
     }
+
+    public String getCust_mail() {
+        return cust_mail;
+    }
+
+    public void setCust_mail(String cust_mail) {
+        this.cust_mail = cust_mail;
+    }
+
+    public String getCust_id() {
+        return cust_id;
+    }
+
+    public void setCust_id(String cust_id) {
+        this.cust_id = cust_id;
+    }
+
 
     public String getCustomername() {
         return customername;

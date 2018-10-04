@@ -1,14 +1,12 @@
 package com.example.uzma.bookmylook;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 //Service provider er login pg(after registration)
+
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -34,15 +32,17 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
     private ProgressDialog p1;
     private FirebaseAuth f1;
     private User user;
-    String username;
+    String username,userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_login_pg);
 
-        f1=FirebaseAuth.getInstance();
+     //   userid=getIntent().getStringExtra("Uid");
 
-        // f1=FirebaseAuth.getInstance();
+        f1= FirebaseAuth.getInstance();
+
+       // f1=FirebaseAuth.getInstance();
 
       /*  if(f1.getCurrentUser()!=null){
             finish();
@@ -57,6 +57,14 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
         b1.setOnClickListener(this);
         t1.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
     private void userlog(){
         String email = e1.getText().toString().trim();
@@ -89,11 +97,14 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
                                         public void onDataChange(DataSnapshot dataSnapshot) {
                                             user=dataSnapshot.getValue(User.class);
                                             username=user.getName();
+                                            userid= FirebaseAuth.getInstance().getCurrentUser().getUid();
                                             Intent intent = new Intent(getApplicationContext(), ProviderProfile.class);
                                             //  Toast.makeText(ProviderLoginPg.this,username, Toast.LENGTH_SHORT).show();
                                             intent.putExtra("ProviderName",username);
+                                            intent.putExtra("Uid",userid);
+                                           // Toast.makeText(ProviderLoginPg.this, userid, Toast.LENGTH_SHORT).show();
                                             startActivity(intent);
-                                            // Toast.makeText(ProviderLoginPg.this, username, Toast.LENGTH_SHORT).show();
+                                           // Toast.makeText(ProviderLoginPg.this, username, Toast.LENGTH_SHORT).show();
                                         }
 
                                         @Override

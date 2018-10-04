@@ -1,8 +1,8 @@
 package com.example.uzma.bookmylook;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -28,7 +28,7 @@ public class ParlourMenu extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     Service service;
     String sessionId;
-    String username;
+    String username,mail;
     Button b1;
 
 
@@ -37,12 +37,13 @@ public class ParlourMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parlour_menu);
         username=getIntent().getStringExtra("UserName");
+        mail=getIntent().getStringExtra("Email");
         b1=findViewById(R.id.bt);
         service=new Service();
         sessionId=getIntent().getStringExtra("EXTRA_SESSION_ID");
         listView = findViewById(R.id.listView1);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        //   database = FirebaseDatabase.getInstance();
+     //   database = FirebaseDatabase.getInstance();
 
 
         //   ref=FirebaseDatabase.getInstance().getReference("Services").child(sessionId);
@@ -52,9 +53,9 @@ public class ParlourMenu extends AppCompatActivity {
 
         FirebaseDatabase.getInstance().getReference("Services").child(sessionId)
                 .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        // System.out.println("Hello");
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               // System.out.println("Hello");
 
                /* for (DataSnapshot ds: dataSnapshot.getChildren())
                 {
@@ -64,30 +65,61 @@ public class ParlourMenu extends AppCompatActivity {
                 }
                 listView.setAdapter(adapter);*/
 
-                        service=dataSnapshot.getValue(Service.class);
-                        list.add(service.getS1().toString());
-                        list.add(service.getS2().toString());
-                        list.add(service.getS3().toString());
-                        list.add(service.getS4().toString());
-                        list.add(service.getS5().toString());
+               service=dataSnapshot.getValue(Service.class);
+               if(service.getS1().toString().equals("no")){
 
-                        listView.setAdapter(adapter);
+               }
+               else {
+                   list.add(service.getS1().toString());
+               }
+                if(service.getS2().toString().equals("no")){
+
+                }
+                else {
+                    list.add(service.getS2().toString());
+                }
+                if(service.getS3().toString().equals("no")){
+
+                }
+                else {
+                    list.add(service.getS3().toString());
+                }
+                if(service.getS4().toString().equals("no")){
+
+                }
+                else {
+                    list.add(service.getS4().toString());
+                }
+                if(service.getS5().toString().equals("no")){
+
+                }
+                else {
+                    list.add(service.getS5().toString());
+                }
 
 
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+               /* list.add(service.getS2().toString());
+                list.add(service.getS3().toString());
+                list.add(service.getS4().toString());
+                list.add(service.getS5().toString());*/
 
-                    }
-                });
+                listView.setAdapter(adapter);
+
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItem=((CheckedTextView)view).getText().toString();
                 if(list1.contains(selectedItem)){
-                    list1.remove(selectedItem);
-                    // list.notifyDataSetChanged();//uncheck item
+                  list1.remove(selectedItem);
+                  // list.notifyDataSetChanged();//uncheck item
                     Toast.makeText(ParlourMenu.this, "OK", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -111,11 +143,12 @@ public class ParlourMenu extends AppCompatActivity {
             items+="-"+item+" "+"\n";
         }
         Toast.makeText(this,"You have selected \n "+items, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), Appoinment.class);
+        Intent intent = new Intent(getApplicationContext(), Appointment.class);
         intent.putExtra("SelectedItems", items);
-        // Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
         intent.putExtra("UserName",username);
         intent.putExtra("EXTRA_SESSION_ID",sessionId);
+        intent.putExtra("Email",mail);
         // Toast.makeText(Retrieve.this, id1, Toast.LENGTH_SHORT).show();
         startActivity(intent);
 

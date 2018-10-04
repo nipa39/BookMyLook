@@ -8,14 +8,14 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".MainActivity"
-    android:background="@drawable/vintage2">
+    android:background="@drawable/vintage8">
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:textSize="30dp"
-        android:text="Select Your Services"
+        android:text="Update Services"
         />
 
 
@@ -38,23 +38,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:text="EyeMakeup"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
             <CheckBox android:id="@+id/cb2"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:text="HairRebonding"
+                android:layout_marginBottom="5dp"
                 android:textStyle="bold"
                 />
             <CheckBox android:id="@+id/cb3"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:text="BridalMakeup"
+                android:layout_marginBottom="7dp"
                 android:textStyle="bold"
                 />
             <CheckBox android:id="@+id/cb4"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:text="DesignerMehendi"
+                android:layout_marginBottom="7dp"
                 android:textStyle="bold"/>
             <CheckBox android:id="@+id/cb5"
                 android:layout_width="wrap_content"
@@ -108,7 +112,7 @@
         android:id="@+id/button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="Update"
         />
 
     <TextView

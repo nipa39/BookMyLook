@@ -1,13 +1,13 @@
 package com.example.uzma.bookmylook;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class MyOffers extends AppCompatActivity {
+public class UpdateServices extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_offers);
+        setContentView(R.layout.activity_update_services);
     }
 }

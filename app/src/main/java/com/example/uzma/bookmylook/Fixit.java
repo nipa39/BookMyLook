@@ -1,15 +1,18 @@
 package com.example.uzma.bookmylook;
 
+//order er complete list ta show kore(pg-7 of user)
+
+//********************
+
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +29,7 @@ public class Fixit extends AppCompatActivity {
     EditText t0,t1,t2,t3,t4,t5,t6,t7;
     Spinner sp;
     ArrayAdapter<String> adapter;
-    String username;
+    String username,mail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +37,13 @@ public class Fixit extends AppCompatActivity {
 
         parlourname=getIntent().getStringExtra("EXTRA_SESSION_ID");
         username=getIntent().getStringExtra("UserName");
-        Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
+        mail=getIntent().getStringExtra("Email");
 
-        // FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+    //    Toast.makeText(this, username, Toast.LENGTH_SHORT).show();
 
-        mAuth=FirebaseAuth.getInstance();
+       // FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getCurrentUser().getUid());
+
+        mAuth= FirebaseAuth.getInstance();
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("Customers").child(parlourname);
         logout=findViewById(R.id.logout);
 
@@ -54,26 +59,26 @@ public class Fixit extends AppCompatActivity {
         t7= findViewById(R.id.gross);
 
 
-        // menu=getIntent().getStringExtra("MENU");
-        // username=getIntent().getStringExtra("UserName");
+       // menu=getIntent().getStringExtra("MENU");
+       // username=getIntent().getStringExtra("UserName");
         category=getIntent().getStringExtra("CATEGORY");
-        // s=menu+"("+category+")";
+       // s=menu+"("+category+")";
         t0.setText(parlourname);
-        t1.setText(username);
+          t1.setText(username);
         t2.setText(category);
 
         String[] a = category.split(" ",0);
 
         int sum=0;
-        // int i=0;
+       // int i=0;
         for(String total : a)
         {
             if(isInteger(total))
             {
-                // Toast.makeText(this,"entry", Toast.LENGTH_SHORT).show();
-                sum=sum+Integer.parseInt(total);
+               // Toast.makeText(this,"entry", Toast.LENGTH_SHORT).show();
+                sum=sum+ Integer.parseInt(total);
 
-            }
+             }
         }
 
 
@@ -96,8 +101,8 @@ public class Fixit extends AppCompatActivity {
         });
         date=getIntent().getStringExtra("DATE");
         t3.setText(date);
-        t5.setText(String.valueOf(sum));
-        double advance=0.3*(double) sum;
+         t5.setText(String.valueOf(sum));
+         double advance=0.3*(double) sum;
         t6.setText(String.valueOf(advance));
         double rem=(double)sum-advance;
         t7.setText(String.valueOf(rem));
@@ -111,13 +116,20 @@ public class Fixit extends AppCompatActivity {
                 String time=t4.getText().toString();
                 String service=t2.getText().toString();
 
-                Customers customers=new Customers(custname,date,time,service);
+
+
 
                 String uploadId = mDatabaseRef.push().getKey();
 
+                String cust_id=uploadId;
+
+                Customers customers=new Customers(cust_id,mail,custname,date,time,service);
+
                 mDatabaseRef.child(uploadId).setValue(customers);
 
-                //  FirebaseDatabase.getInstance().getReference("Customers").child(parlourname).push().getKey()
+                Toast.makeText(Fixit.this, "Booking Placed!", Toast.LENGTH_SHORT).show();
+
+              //  FirebaseDatabase.getInstance().getReference("Customers").child(parlourname).push().getKey()
 
             }
         });
@@ -125,7 +137,7 @@ public class Fixit extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // mAuth.getCurrentUser().getEmail();
+               // mAuth.getCurrentUser().getEmail();
                 Toast.makeText(Fixit.this, "Signed Out", Toast.LENGTH_SHORT).show();
                 finish();
                 startActivity(new Intent(Fixit.this,UserLoginPg.class));

@@ -1,11 +1,9 @@
 package com.example.uzma.bookmylook;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,30 +16,26 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-//Uploaded pic gula recycler view te show korar pg
-public class ImagesActivity extends AppCompatActivity {
-
+public class SharedMoments extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private ImageAdapter mAdapter;
 
     private DatabaseReference mDatabaseRef;
     private List<Upload> mUploads;
     String sessionId;
-    String username,mail;
+    String username;
 
-    private TextView t1,t2;
+    private TextView t1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_images);
+        setContentView(R.layout.activity_shared_moments);
 
         username=getIntent().getStringExtra("UserName");
-        mail=getIntent().getStringExtra("Email");
 
-        t1=findViewById(R.id.placeorder);
-        t2=findViewById(R.id.rate);
+      //  t1=findViewById(R.id.placeorder);
 
         sessionId=getIntent().getStringExtra("EXTRA_SESSION_ID");
 
@@ -51,7 +45,7 @@ public class ImagesActivity extends AppCompatActivity {
 
         mUploads =  new ArrayList<>();
 
-        mDatabaseRef= FirebaseDatabase.getInstance().getReference("Works").child(sessionId);
+        mDatabaseRef= FirebaseDatabase.getInstance().getReference("Moments");
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,40 +56,27 @@ public class ImagesActivity extends AppCompatActivity {
 
                 }
 
-                mAdapter= new ImageAdapter(ImagesActivity.this,mUploads);
+                mAdapter= new ImageAdapter(SharedMoments.this,mUploads);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-                Toast.makeText(ImagesActivity.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SharedMoments.this,databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        t1.setOnClickListener(new View.OnClickListener() {
+     /*   t1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ParlourMenu.class);
+                Intent intent = new Intent(getApplicationContext(), Retrieve.class);
                 intent.putExtra("EXTRA_SESSION_ID", sessionId);
-               // Toast.makeText(ImagesActivity.this,username, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(ImagesActivity.this,username, Toast.LENGTH_SHORT).show();
                 intent.putExtra("UserName",username);
-                intent.putExtra("Email",mail);
                 startActivity(intent);
             }
-        });
-
-        t2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Rating.class);
-                intent.putExtra("EXTRA_SESSION_ID", sessionId);
-                intent.putExtra("UserName",username);
-                intent.putExtra("Email",mail);
-                startActivity(intent);
-
-            }
-        });
+        });*/
 
     }
 }

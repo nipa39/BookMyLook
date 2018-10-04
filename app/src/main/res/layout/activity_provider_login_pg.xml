@@ -16,12 +16,15 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/txtlog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:layout_margin="15dp"
+            android:fontFamily="cursive"
+            android:text="Provider Login"
             android:textAlignment="center"
-            android:id="@+id/txtlog"
-            android:layout_margin="15dp"/>
+            android:textSize="30sp"
+            android:textStyle="bold" />
         <EditText
             android:layout_margin="15dp"
             android:inputType="textEmailAddress"
@@ -36,13 +39,18 @@
             android:hint="Enter your pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <Button
             android:id="@+id/btn2"
-            android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"/>
+            android:layout_margin="15dp"
+            android:fontFamily="cursive"
+            android:text="Click here"
+            android:textStyle="bold" />
         <TextView
+            android:textSize="20dp"
+            android:background="#ffe2e4"
             android:textAlignment="center"
             android:text="No account?? sign up"
             android:id="@+id/txt2"

@@ -8,13 +8,33 @@
     android:padding="10dp"
     tools:context=".Retrieve"
     android:background="@drawable/vintage8">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <TextView
+
+           android:id="@+id/txtshare"
+           android:layout_marginTop="10dp"
+           android:layout_marginBottom="30dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:text="Share Photos"
+           android:textSize="20dp"
+           android:textStyle="bold" />
+
+
+
+   </LinearLayout>
     <TextView
+        android:background="#ffe2e4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Parlours!"
+        android:layout_marginLeft="15dp"
+        android:text="All Parlours"
         android:textSize="30dp"
-        android:textStyle="italic"
-        android:layout_marginLeft="115dp"/>
+        android:textStyle="bold" />
 
     <SearchView
         android:layout_width="match_parent"
