@@ -14,10 +14,9 @@
        android:orientation="horizontal">
        <ImageView
            android:id="@+id/nav"
-           android:layout_marginLeft="10dp"
            android:src="@drawable/navbar"
-           android:layout_width="50dp"
-           android:layout_height="wrap_content" />
+           android:layout_width="40dp"
+           android:layout_height="40dp" />
        <TextView
            android:id="@+id/txtshare"
            android:layout_marginTop="20dp"
