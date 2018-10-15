@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 public class ProviderProfile extends AppCompatActivity {
 
     ListView listView;
-    String username,userid;
+    String username,userid,pmail,cu_email;
    // FirebaseDatabase database;
    // DatabaseReference ref;
     ArrayList<String> list;
@@ -36,18 +37,22 @@ public class ProviderProfile extends AppCompatActivity {
     Customers customers;
     Button b1,b2;
     TextView t1,t2;
+    ImageView nav;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_profile);
 
+        nav=findViewById(R.id.nav1);
+
         b1=findViewById(R.id.btserviced);
         b2=findViewById(R.id.btnnotify);
         t1=findViewById(R.id.txtlogout);
-        t2=findViewById(R.id.editprofile);
+     //   t2=findViewById(R.id.editprofile);
 
         username=getIntent().getStringExtra("ProviderName");
         userid=getIntent().getStringExtra("Uid");
+        pmail=getIntent().getStringExtra("Mail");
 
        Toast.makeText(this, "Hey "+username, Toast.LENGTH_SHORT).show();
 
@@ -121,7 +126,7 @@ public class ProviderProfile extends AppCompatActivity {
                 startActivity(new Intent(ProviderProfile.this,ProviderLoginPg.class));
             }
         });
-        t2.setOnClickListener(new View.OnClickListener() {
+        nav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditProfile.class);
@@ -129,6 +134,7 @@ public class ProviderProfile extends AppCompatActivity {
                 intent.putExtra("Parlourname",username);
 
                 intent.putExtra("Uid",userid);
+                intent.putExtra("Mail",pmail);
                 startActivity(intent);
             }
         });
@@ -138,24 +144,37 @@ public class ProviderProfile extends AppCompatActivity {
 
 
     public void emailnotify(){
-/*
-        for (String item:list1){
+
+        for (String item:list1) {
             // items+="-"+item+" "+"\n";
-            String[] a = item.split("\n",0);
-            String cu_email=a[1];
-          //  Toast.makeText(this, cu_id, Toast.LENGTH_SHORT).show();
-            DatabaseReference drCust= FirebaseDatabase.getInstance().getReference("Customers").child(username).child(cu_id);
+            String[] a = item.split("\n", 0);
+             cu_email = a[1];
+            //  Toast.makeText(this, cu_id, Toast.LENGTH_SHORT).show();
+            //  DatabaseReference drCust= FirebaseDatabase.getInstance().getReference("Customers").child(username).child(cu_id);
+        }
 
 
-        }*/
         Intent intent=new Intent(getApplicationContext(),EmailNotification.class);
-
+        intent.putExtra("Mail",pmail);
+        intent.putExtra("Umail",cu_email);
         startActivity(intent);
     }
 
     public void deleteCustomer(){
-        Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
-       // String items="";
+
+       /* for (String item:list1){
+           if(list.contains(item))
+           {
+               list.remove(item);
+               adapter.remove(item);
+           }
+        }*/
+
+
+         /* if(list.contains(item)){
+            adapter.remove(item);
+        }*/
+
         for (String item:list1){
            // items+="-"+item+" "+"\n";
             String[] a = item.split("\n",0);
@@ -164,9 +183,7 @@ public class ProviderProfile extends AppCompatActivity {
             DatabaseReference drCust= FirebaseDatabase.getInstance().getReference("Customers").child(username).child(cu_id);
             drCust.removeValue();
         }
-       /* if(list.contains(item)){
-            adapter.remove(item);
-        }*/
+
 
        FirebaseDatabase.getInstance().getReference("Customers").child(username)
                 .addValueEventListener(new ValueEventListener() {
@@ -190,7 +207,11 @@ public class ProviderProfile extends AppCompatActivity {
                     }
                 });
 
+        Toast.makeText(this, "Deleted", Toast.LENGTH_SHORT).show();
+
      //   adapter.notifyDataSetChanged();
+
+
     }
 
 

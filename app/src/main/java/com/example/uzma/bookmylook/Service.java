@@ -8,7 +8,7 @@ public class Service {
 
     }
 
-    public Service(String s1, String s2, String s3, String s4, String s5){
+    public Service(String s1,String s2,String s3,String s4,String s5){
         this.s1=s1;
         this.s2=s2;
         this.s3=s3;

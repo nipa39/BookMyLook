@@ -9,7 +9,7 @@ public class SessionManagement {
 
     public SessionManagement(Context context){
         this.context=context;
-        sharedPreferences=context.getSharedPreferences("allinfo", Context.MODE_PRIVATE);
+        sharedPreferences=context.getSharedPreferences("allinfo",Context.MODE_PRIVATE);
 
     }
 }

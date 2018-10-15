@@ -10,6 +10,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="From:"
+        android:textAppearance="@style/TextAppearance.AppCompat"/>
+    <EditText
+        android:id="@+id/fromemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="To:"
         android:textAppearance="@style/TextAppearance.AppCompat"/>
     <EditText
@@ -36,7 +47,7 @@
         android:id="@+id/txtmessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lines="14"
+        android:lines="10"
         android:gravity="start|top"
         />
     <Button

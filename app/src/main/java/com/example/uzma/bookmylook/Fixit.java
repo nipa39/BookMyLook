@@ -23,6 +23,7 @@ public class Fixit extends AppCompatActivity {
 
     FirebaseAuth mAuth;
     private DatabaseReference mDatabaseRef;
+    private DatabaseReference custHistory;
 
     Button b1,logout;
     String menu,category,s="",date,parlourname;
@@ -45,6 +46,7 @@ public class Fixit extends AppCompatActivity {
 
         mAuth= FirebaseAuth.getInstance();
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("Customers").child(parlourname);
+        custHistory= FirebaseDatabase.getInstance().getReference("CustHistory").child(parlourname);
         logout=findViewById(R.id.logout);
 
         t0=findViewById(R.id.pname);
@@ -76,7 +78,7 @@ public class Fixit extends AppCompatActivity {
             if(isInteger(total))
             {
                // Toast.makeText(this,"entry", Toast.LENGTH_SHORT).show();
-                sum=sum+ Integer.parseInt(total);
+                sum=sum+Integer.parseInt(total);
 
              }
         }
@@ -126,6 +128,7 @@ public class Fixit extends AppCompatActivity {
                 Customers customers=new Customers(cust_id,mail,custname,date,time,service);
 
                 mDatabaseRef.child(uploadId).setValue(customers);
+                custHistory.child(uploadId).setValue(customers);
 
                 Toast.makeText(Fixit.this, "Booking Placed!", Toast.LENGTH_SHORT).show();
 

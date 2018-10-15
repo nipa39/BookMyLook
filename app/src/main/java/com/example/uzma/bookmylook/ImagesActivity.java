@@ -88,7 +88,7 @@ public class ImagesActivity extends AppCompatActivity {
         t2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Rating.class);
+                Intent intent = new Intent(getApplicationContext(), GridLayout.class);
                 intent.putExtra("EXTRA_SESSION_ID", sessionId);
                 intent.putExtra("UserName",username);
                 intent.putExtra("Email",mail);

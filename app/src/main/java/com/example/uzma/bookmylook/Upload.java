@@ -9,7 +9,7 @@ public class Upload {
     public Upload(){
 
     }
-    public Upload(String picname, String imageUrl){
+    public Upload(String picname,String imageUrl){
         if(picname.trim().equals("")){
             picname = "No name";
         }

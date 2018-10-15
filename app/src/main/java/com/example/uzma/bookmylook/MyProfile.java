@@ -18,16 +18,17 @@ public class MyProfile extends AppCompatActivity {
     DatabaseReference ref;
     private FirebaseAuth mAuth;
     User user;
-    String userid;
+    String userid,pmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
+        pmail=getIntent().getStringExtra("Mail");
         n = findViewById(R.id.etname);
         p = findViewById(R.id.etphn);
-        e = findViewById(R.id.etemail);
+       // e = findViewById(R.id.etemail);
         b1=findViewById(R.id.updateprof);
 
         userid = getIntent().getStringExtra("Uid");
@@ -40,7 +41,7 @@ public class MyProfile extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                user=new User(n.getText().toString(),e.getText().toString(),p.getText().toString());
+                user=new User(n.getText().toString(),pmail,p.getText().toString());
 
                 ref.setValue(user);
 

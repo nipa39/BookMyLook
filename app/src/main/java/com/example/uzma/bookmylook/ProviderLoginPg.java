@@ -32,7 +32,7 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
     private ProgressDialog p1;
     private FirebaseAuth f1;
     private User user;
-    String username,userid;
+    String username,userid,pmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +67,8 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
         startActivity(intent);
     }
     private void userlog(){
-        String email = e1.getText().toString().trim();
+        final String email = e1.getText().toString().trim();
+        pmail=email;
         String pass = e2.getText().toString().trim();
 
         if(TextUtils.isEmpty(email)){
@@ -102,6 +103,7 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
                                             //  Toast.makeText(ProviderLoginPg.this,username, Toast.LENGTH_SHORT).show();
                                             intent.putExtra("ProviderName",username);
                                             intent.putExtra("Uid",userid);
+                                            intent.putExtra("Mail",pmail);
                                            // Toast.makeText(ProviderLoginPg.this, userid, Toast.LENGTH_SHORT).show();
                                             startActivity(intent);
                                            // Toast.makeText(ProviderLoginPg.this, username, Toast.LENGTH_SHORT).show();
@@ -115,6 +117,9 @@ public class ProviderLoginPg extends AppCompatActivity implements View.OnClickLi
 
                             // Toast.makeText(ProviderLoginPg.this, "ok", Toast.LENGTH_SHORT).show();
 
+                        }
+                        else {
+                            Toast.makeText(ProviderLoginPg.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

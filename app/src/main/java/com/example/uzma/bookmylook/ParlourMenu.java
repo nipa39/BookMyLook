@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,7 @@ public class ParlourMenu extends AppCompatActivity {
     String sessionId;
     String username,mail;
     Button b1;
+    TextView t1;
 
 
     @Override
@@ -39,6 +41,7 @@ public class ParlourMenu extends AppCompatActivity {
         username=getIntent().getStringExtra("UserName");
         mail=getIntent().getStringExtra("Email");
         b1=findViewById(R.id.bt);
+       // t1=findViewById(R.id.parlourinfo);
         service=new Service();
         sessionId=getIntent().getStringExtra("EXTRA_SESSION_ID");
         listView = findViewById(R.id.listView1);
@@ -135,6 +138,7 @@ public class ParlourMenu extends AppCompatActivity {
                 showSelectedItems(view);
             }
         });
+
     }
 
     public void showSelectedItems(View view){

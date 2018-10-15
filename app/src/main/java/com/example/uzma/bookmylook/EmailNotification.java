@@ -9,15 +9,21 @@ import android.widget.EditText;
 
 public class EmailNotification extends AppCompatActivity {
 
-    private EditText txtto,txtsub,txtmess;
+    private EditText txtto,txtsub,txtmess,txtfrom;
+    String umail,pmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_notification);
+        umail=getIntent().getStringExtra("Umail");
+        pmail=getIntent().getStringExtra("Mail");
 
         txtto=findViewById(R.id.email);
+        txtto.setText(umail);
         txtsub=findViewById(R.id.subject);
         txtmess=findViewById(R.id.txtmessage);
+        txtfrom=findViewById(R.id.fromemail);
+        txtfrom.setText(pmail);
 
         Button butnsend=findViewById(R.id.btnsend);
         butnsend.setOnClickListener(new View.OnClickListener() {
@@ -29,14 +35,16 @@ public class EmailNotification extends AppCompatActivity {
     }
 
     private void sendMail(){
+        String from=txtfrom.getText().toString();
         String recipientlist=txtto.getText().toString();
-        String[] recipients=recipientlist.split(",");
+       String[] recipients=recipientlist.split(",");
 
         String subject=txtsub.getText().toString();
 
         String message=txtmess.getText().toString();
 
         Intent intent=new Intent(Intent.ACTION_SEND);
+     //   intent.putExtra(Intent.EXTRA_EMAIL,from);
         intent.putExtra(Intent.EXTRA_EMAIL,recipients);
         intent.putExtra(Intent.EXTRA_SUBJECT,subject);
         intent.putExtra(Intent.EXTRA_TEXT,message);

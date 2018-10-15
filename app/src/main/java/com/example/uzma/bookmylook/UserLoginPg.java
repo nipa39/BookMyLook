@@ -95,7 +95,7 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task){
                         p1.dismiss();
-                        Toast.makeText(UserLoginPg.this, "Success!", Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(UserLoginPg.this, "Success!", Toast.LENGTH_SHORT).show();
                         if(task.isSuccessful()){
 
 
@@ -120,6 +120,9 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
                                         }
                                     });
 
+                        }
+                        else {
+                            Toast.makeText(UserLoginPg.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

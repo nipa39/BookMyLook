@@ -9,13 +9,14 @@
     android:background="@drawable/vintage8">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="70dp"
         android:layout_marginTop="15dp"
         android:fontFamily="cursive"
-        android:text="Hey Share Your Exciting Moments!"
+        android:text="Share Your Moments!"
+        android:background="#cda"
         android:textSize="24sp"
         android:textStyle="bold" />
     <LinearLayout
@@ -60,15 +61,14 @@
     <TextView
 
         android:id="@+id/showuploads"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="19dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginStart="54dp"
-        android:fontFamily="cursive"
-        android:text="Meet people!!See what others have got to show!!Click here!"
+        android:background="#cda"
+        android:text="View "
+        android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold" />
 

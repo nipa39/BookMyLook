@@ -7,6 +7,38 @@
     tools:context=".EditProfile"
     android:orientation="vertical"
     android:background="@drawable/vintage8">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="150dp"
+        android:background="#fE7f9c">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+
+                android:layout_marginTop="80dp"
+                android:id="@+id/proname"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="10dp"
+
+                android:textSize="15dp"
+                />
+            <TextView
+                android:id="@+id/proemail"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 
 
@@ -17,9 +49,10 @@
         android:orientation="horizontal"
         android:layout_margin="15dp">
 
+
         <ImageView
 
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:src="@drawable/prof" />
@@ -29,7 +62,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Profile"
-            android:textSize="30dp"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"/>
 
 
@@ -43,18 +77,20 @@
         android:layout_margin="15dp">
         <ImageView
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="59dp"
             android:layout_marginLeft="35dp"
-            android:src="@drawable/address" />
+            android:src="@drawable/clients" />
 
 
 
         <TextView
+            android:id="@+id/myclients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Address"
-            android:textSize="30dp"
+            android:text="My Clients"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"/>
 
 
@@ -66,7 +102,7 @@
         android:layout_margin="15dp">
         <ImageView
 
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:src="@drawable/icons8discountfilled50" />
@@ -76,7 +112,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Offers"
-            android:textSize="30dp"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"/>
 
 
@@ -89,7 +126,7 @@
         android:layout_margin="15dp">
         <ImageView
 
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:src="@drawable/rate" />
@@ -99,7 +136,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Ratings"
-            android:textSize="30dp"
+            android:textSize="20dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="20dp"/>
 
 
@@ -110,10 +148,10 @@
         android:orientation="horizontal"
         android:layout_margin="15dp">
         <ImageView
-
-            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
+            android:layout_marginLeft="35dp"
             android:src="@drawable/icons8barberscissors24" />
 
         <TextView
@@ -121,8 +159,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Services"
-            android:textSize="30dp"
-            android:layout_marginLeft="20dp"/>
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"/>
 
 
     </LinearLayout>

@@ -7,7 +7,7 @@ package com.example.uzma.bookmylook;
 
         }
 
-        public RateComment(String user, String comment, float ratingbar) {
+        public RateComment(String user,String comment, float ratingbar) {
             this.user=user;
             this.comment = comment;
             this.ratingbar = ratingbar;
