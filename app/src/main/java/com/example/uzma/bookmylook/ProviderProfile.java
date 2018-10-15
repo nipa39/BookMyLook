@@ -43,7 +43,7 @@ public class ProviderProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provider_profile);
 
-        nav=findViewById(R.id.nav1);
+        nav=findViewById(R.id.nav);
 
         b1=findViewById(R.id.btserviced);
         b2=findViewById(R.id.btnnotify);
