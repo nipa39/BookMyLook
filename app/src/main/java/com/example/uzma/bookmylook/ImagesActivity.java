@@ -27,7 +27,7 @@ public class ImagesActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     private List<Upload> mUploads;
     String sessionId;
-    String username,mail;
+    String username,mail,pname;
 
     private TextView t1,t2;
 
@@ -43,6 +43,8 @@ public class ImagesActivity extends AppCompatActivity {
         t1=findViewById(R.id.placeorder);
         t2=findViewById(R.id.rate);
 
+        pname=getIntent().getStringExtra("Pname");
+
         sessionId=getIntent().getStringExtra("EXTRA_SESSION_ID");
 
         mRecyclerView= findViewById(R.id.recview);
@@ -52,6 +54,7 @@ public class ImagesActivity extends AppCompatActivity {
         mUploads =  new ArrayList<>();
 
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("Works").child(sessionId);
+       // Toast.makeText(ImagesActivity.this, sessionId, Toast.LENGTH_SHORT).show();
 
         mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -92,6 +95,7 @@ public class ImagesActivity extends AppCompatActivity {
                 intent.putExtra("EXTRA_SESSION_ID", sessionId);
                 intent.putExtra("UserName",username);
                 intent.putExtra("Email",mail);
+                intent.putExtra("Pname",pname);
                 startActivity(intent);
 
             }

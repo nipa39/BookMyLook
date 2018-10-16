@@ -18,6 +18,16 @@
         android:text="See what others think about your works!!"
         android:textSize="20dp"
         android:textStyle="bold|italic" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/avgRating"
+        android:textStyle="bold|italic"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        />
 
 
 

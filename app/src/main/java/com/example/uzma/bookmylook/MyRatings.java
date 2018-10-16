@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,15 +26,16 @@ public class MyRatings extends AppCompatActivity {
     ArrayAdapter<String> adapter;
    // User user;
     RateComment rc;
-    TextView share;
+    TextView share,avgRating;
     // UserId userId;
-    String rating;
+    String rating,count,summm;
+    float sum=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_ratings);
         rating=getIntent().getStringExtra("Parlourname");
-
+        avgRating=findViewById(R.id.avgRating);
         rc=new RateComment();
         listView = findViewById(R.id.listView1);
         database = FirebaseDatabase.getInstance();
@@ -50,8 +52,15 @@ public class MyRatings extends AppCompatActivity {
 
                     list.add("User :  "+rc.getUser().toString()+"\n"+"Comment : "+rc.getComment().toString()+
                     "\n"+"Rate : "+rc.getRatingbar());
+                    sum=sum+rc.getRatingbar();
                 }
                 listView.setAdapter(adapter);
+                int count=list.size();
+                float avg=sum/count;
+                avgRating.setText("Average Rating: "+Float.toString(avg)+"("+Integer.toString(count)+")");
+
+
+
             }
 
             @Override
@@ -60,5 +69,14 @@ public class MyRatings extends AppCompatActivity {
             }
         });
 
+    }
+
+    public double getTotal(ArrayList<RateComment> list){
+
+        double total=0.0;
+        for(int i=0;i<list.size();i++){
+            total=total+(list.get(i).getRatingbar());
+        }
+        return total;
     }
 }

@@ -7,9 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,7 +34,9 @@ public class Retrieve extends AppCompatActivity {
     User user;
     TextView share;
    // UserId userId;
+    ImageView nav;
     String id1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +60,19 @@ public class Retrieve extends AppCompatActivity {
         mail=getIntent().getStringExtra("Email");
 
 
+        nav=findViewById(R.id.nav);
+        nav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), UserNav.class);
+                //  Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
+                intent.putExtra("UserName",username);
+
+               // intent.putExtra("Uid",username);
+                intent.putExtra("Email",mail);
+                startActivity(intent);
+            }
+        });
 
         sv=findViewById(R.id.sc1);
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -130,9 +147,10 @@ public class Retrieve extends AppCompatActivity {
 
                                 Intent intent = new Intent(getApplicationContext(), ImagesActivity.class);
                                 intent.putExtra("EXTRA_SESSION_ID", id1);
-                              //  Toast.makeText(Retrieve.this,username, Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(Retrieve.this,username, Toast.LENGTH_SHORT).show();
                                 intent.putExtra("UserName",username);
                                 intent.putExtra("Email",mail);
+                                intent.putExtra("Pname",id1);
                                 // Toast.makeText(Retrieve.this, id1, Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
 

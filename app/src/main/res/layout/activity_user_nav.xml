@@ -40,14 +40,6 @@
     </LinearLayout>
 
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
 
 
     <LinearLayout
@@ -76,7 +68,7 @@
 
 
     </LinearLayout
->
+        >
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -88,18 +80,17 @@
             android:layout_width="30dp"
             android:layout_height="59dp"
             android:layout_marginLeft="35dp"
-            android:src="@drawable/clients" />
-
+            android:src="@drawable/order" />
 
 
         <TextView
-            android:id="@+id/myclients"
+            android:id="@+id/mybookings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Clients"
-            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"/>
+            android:text="My Bookings"
+            android:textSize="20dp" />
 
 
     </LinearLayout>
@@ -113,16 +104,16 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:layout_marginLeft="35dp"
-            android:src="@drawable/icons8discountfilled50" />
+            android:src="@drawable/photo" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Offers"
-            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"/>
+            android:text="Share Photo"
+            android:textSize="20dp" />
 
 
     </LinearLayout>
@@ -137,16 +128,16 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:layout_marginLeft="35dp"
-            android:src="@drawable/rate" />
+            android:src="@drawable/logout" />
 
         <TextView
-            android:id="@+id/myratings"
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Ratings"
-            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"/>
+            android:text="Log Out"
+            android:textSize="20dp" />
 
 
     </LinearLayout>
@@ -156,47 +147,23 @@
         android:orientation="horizontal"
         android:layout_margin="15dp">
         <ImageView
-            
+
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:layout_marginLeft="35dp"
-            android:src="@drawable/icons8barberscissors24" />
+            android:src="@drawable/appinfo" />
 
         <TextView
             android:id="@+id/myservices"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Services"
-            android:textSize="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:text="App Info"
+            android:textSize="20dp" />
 
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="15dp">
-        <ImageView
 
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="35dp"
-            android:src="@drawable/myaddress" />
-
-        <TextView
-            android:id="@+id/myaddress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="My Address"
-            android:textSize="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="15dp"/>
-
-
-    </LinearLayout>
-    </LinearLayout>
-</ScrollView>
 </LinearLayout>

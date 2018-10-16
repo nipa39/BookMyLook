@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class EditProfile extends AppCompatActivity {
 
     String parlourname,userid,pmail;
-    TextView rating,profile,services,proemail,proname,myclients;
+    TextView rating,profile,services,proemail,proname,myclients,address;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class EditProfile extends AppCompatActivity {
         profile=findViewById(R.id.myprofile);
         services=findViewById(R.id.myservices);
         myclients=findViewById(R.id.myclients);
+        address=findViewById(R.id.myaddress);
 
         myclients.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +73,17 @@ public class EditProfile extends AppCompatActivity {
                 //  Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
                 intent.putExtra("Parlourname",parlourname);
 
+                startActivity(intent);
+            }
+        });
+
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MyAddress.class);
+                intent.putExtra("Mail",pmail);
+                intent.putExtra("Uid",userid);
+                intent.putExtra("Pname",parlourname);
                 startActivity(intent);
             }
         });
