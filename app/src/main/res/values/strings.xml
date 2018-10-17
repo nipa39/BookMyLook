@@ -19,5 +19,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_providerpg2">providerpg2</string>
+    <string name="title_activity_maps">Map</string>
+
 
 </resources>

@@ -6,22 +6,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/bookmylook"
-    android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    >
+    android:background="@drawable/vintage8">
 
-   <Button
-       android:id="@+id/main_button"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="BookMyLook"
-       android:textSize="35sp"
-       android:gravity="center"
-       android:layout_centerVertical="true"
-       android:layout_centerHorizontal="true"
-       android:textStyle="italic"
-       android:background="#ff48"
-       android:textColor="#f0f7e7"/>
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registration"
+            android:textStyle="italic"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:id="@+id/txtreg"
+            />
+        <EditText
+            android:layout_margin="10dp"
+            android:inputType="textEmailAddress"
+            android:id="@+id/editTextEmail"
+            android:hint="Enter your email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_margin="10dp"
+            android:inputType="textPassword"
+            android:id="@+id/editTextPassword"
+            android:hint="Enter your pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter your contact number"
+            android:inputType="number"
+            android:id="@+id/edit_text_phone"
+            />
+        <EditText
+            android:layout_margin="10dp"
+            android:inputType="text"
+            android:id="@+id/editTextName"
+            android:hint="Enter your Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn1"
+
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register User"
+            android:layout_marginBottom="15dp"/>
+        <TextView
+            android:background="#ffe2e4"
+            android:textAlignment="center"
+            android:text="Already an user?? Sign in here"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:id="@+id/txtuser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn2"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register ServiceProvider"/>
+        <TextView
+            android:textSize="20dp"
+            android:background="#ffe2e4"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:text="Already a provider?? Sign in here"
+            android:id="@+id/txt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
 
 </RelativeLayout>

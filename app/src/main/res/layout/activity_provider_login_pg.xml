@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserLoginPg"
+    android:background="@drawable/vintage2">
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtlog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="cursive"
+            android:text="Provider Login"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_margin="15dp"
+            android:inputType="textEmailAddress"
+            android:id="@+id/editTextEmail2"
+            android:hint="Enter your email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_margin="15dp"
+            android:inputType="textPassword"
+            android:id="@+id/editTextPassword2"
+            android:hint="Enter your pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="cursive"
+            android:text="Click here"
+            android:textStyle="bold" />
+        <TextView
+            android:textSize="20dp"
+            android:background="#ffe2e4"
+            android:textAlignment="center"
+            android:text="No account?? sign up"
+            android:id="@+id/txt2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+</RelativeLayout>

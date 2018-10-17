@@ -6,47 +6,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/fixit"
+    android:background="@drawable/vintage8"
     tools:context=".Fixit"
     >
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Available Free Slots"
-        android:textSize="25dp"
+        android:background="#faebd7"
+        android:fontFamily="cursive"
         android:gravity="center"
-        android:textStyle="italic"
+        android:text="Select appointment time"
+        android:textSize="25dp"
+        android:textStyle="bold" />
 
-        android:background="#faebd7"/>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:entries="@array/Time"
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:entries="@array/Time"
+            android:background="#ffb6c1"
+            android:layout_marginBottom="20dp"/>
 
-        android:background="#ffb6c1"
-        android:layout_marginBottom="20dp"/>
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Order details"
-    android:textSize="30dp"
-    android:textStyle="bold"
-    android:layout_marginBottom="20dp"
-    />
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <LinearLayout
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
+        android:layout_marginBottom="20dp"
+        android:text="Order details"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,174 +52,233 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                >
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Customer's name:"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
+                    android:orientation="horizontal">
 
-                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Customer's name:"
+                        android:textSize="30sp"
 
-                <EditText
-                    android:id="@+id/cust"
-                    android:layout_width="182dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/cust"
+                        android:layout_width="182dp"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:fontFamily="sans-serif"
+                        android:padding="15dp"
+                        android:textColor="#0a0006"
+                        android:textStyle="bold"
+                        tools:editable="false" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:padding="15dp"
-                    android:textColor="#0a0006"
-                    android:textStyle="bold"
-                    tools:editable="false" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Parlour :"
+
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/pname"
+                        android:layout_width="182dp"
+                        android:layout_height="wrap_content"
+                        android:editable="true"
+                        android:enabled="false"
+                        android:padding="15dp"
+                        android:textColor="#0a0006"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Selected service:"
+
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/serv"
+                        android:layout_width="182dp"
+                        android:layout_height="wrap_content"
+                        android:editable="true"
+                        android:enabled="false"
+                        android:padding="15dp"
+                        android:textColor="#0a0006"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Date :"
+                        android:textSize="30sp"
+
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/date"
+                        android:layout_width="182dp"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:padding="15dp"
+                        android:textColor="#0a0006"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/timeTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Appointment time:"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/time"
+                        android:layout_width="182dp"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:padding="15dp"
+                        android:textColor="#0a0006"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/totalTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Total:"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/total"
+                        android:layout_width="182dp"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:padding="15dp"
+                        android:textColor="#0a0006"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/advTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="cursive"
+                        android:text="Advance:"
+                        android:textSize="30sp" />
+
+                    <EditText
+                        android:id="@+id/adv"
+                        android:layout_width="182dp"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:padding="15dp"
+                        android:textColor="#0a0006"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/grossTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:fontFamily="cursive"
+                        android:text="Gross total:"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/gross"
+                        android:layout_width="182dp"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:padding="15dp"
+                        android:textColor="#0a0006"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+
             </LinearLayout>
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Selected service:"
-                android:textSize="25dp"
 
-                />
 
-        <EditText
-            android:id="@+id/serv"
-            android:layout_width="182dp"
-            android:layout_height="wrap_content"
-            android:editable="true"
-            android:textStyle="bold"
-            android:enabled="false"
-            android:padding="15dp"
-            android:textColor="#0a0006"/>
-</LinearLayout>
-            <LinearLayout
+
+
+            <Button
+
+                android:id="@+id/confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date :"
-                android:textSize="25dp"
-                android:textStyle="bold"
-
-                />
-
-                <EditText
-                    android:id="@+id/date"
-                    android:layout_width="182dp"
-                    android:layout_height="wrap_content"
-                    android:editable="false"
-                    android:padding="15dp"
-                    android:textColor="#0a0006"
-                    android:textStyle="bold" />
-            </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-
-            <TextView
-                android:id="@+id/timeTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Appointment time:"
+                android:layout_margin="5dp"
+                android:background="#faebd7"
+                android:text="Place booking"
                 android:textSize="25dp" />
-    <EditText
-        android:id="@+id/time"
-        android:layout_width="182dp"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:editable="true"
-        android:textStyle="bold"
-        android:textColor="#0a0006"/>
-</LinearLayout>
-            <LinearLayout
+
+            <Button
+
+                android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total:"
-                android:textSize="25dp"
-                android:textStyle="bold"
-                android:id="@+id/totalTv"
-                />
-                <EditText
-                    android:id="@+id/total"
-                    android:layout_width="182dp"
-                    android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:editable="true"
-                    android:textStyle="bold"
-                    android:textColor="#0a0006"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Advance:"
-                android:textSize="25dp"
-                android:id="@+id/advTv"
-                />
-                <EditText
-                    android:id="@+id/adv"
-                    android:layout_width="182dp"
-                    android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:editable="true"
-                    android:textStyle="bold"
-                    android:textColor="#0a0006"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gross total:"
-                android:textSize="25dp"
-                android:layout_marginBottom="30dp"
-                android:id="@+id/grossTv"
-                />
-                <EditText
-                    android:id="@+id/gross"
-                    android:layout_width="182dp"
-                    android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:editable="true"
-                    android:textStyle="bold"
-                    android:textColor="#0a0006"/>
-            </LinearLayout>
+                android:layout_margin="5dp"
+                android:background="#faebd7"
+                android:text="Logout"
+                android:textSize="25dp" />
 
 
-
-</LinearLayout>
-
-
-
-
-        <Button
-
-            android:id="@+id/confirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="#faebd7"
-            android:text="Confirm and Proceed"
-            android:textSize="25dp" />
-
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
