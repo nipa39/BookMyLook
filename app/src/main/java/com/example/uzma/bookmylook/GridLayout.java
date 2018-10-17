@@ -47,7 +47,7 @@ public class GridLayout extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ref= FirebaseDatabase.getInstance().getReference("Address").child(pname);
-                Toast.makeText(GridLayout.this,pname,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(GridLayout.this,pname,Toast.LENGTH_SHORT).show();
                 // Read from the database
                 ref.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -56,7 +56,7 @@ public class GridLayout extends AppCompatActivity {
                         // whenever data at this location is updated.
                          value = dataSnapshot.getValue(String.class);
                         // Log.d(TAG, "Value is: " + value);
-                       // Toast.makeText(GridLayout.this,value,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(GridLayout.this,value,Toast.LENGTH_SHORT).show();
                         Intent i=new Intent(GridLayout.this,MapsActivity.class);
                         i.putExtra("Add",value);
                        // Toast.makeText(GridLayout.this, sp, Toast.LENGTH_SHORT).show();

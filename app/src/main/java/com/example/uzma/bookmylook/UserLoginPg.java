@@ -33,7 +33,7 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
     private FirebaseAuth f1;
     //private FirebaseDatabase d1;
     User user;
-    String username,usermail;
+    String username,usermail,userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,10 +107,12 @@ public class UserLoginPg extends AppCompatActivity implements View.OnClickListen
                                             user=dataSnapshot.getValue(User.class);
                                             username=user.getName();
                                             usermail=user.getEmail();
+                                            userid= FirebaseAuth.getInstance().getCurrentUser().getUid();
                                             Intent intent = new Intent(getApplicationContext(), Retrieve.class);
                                           //  Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
                                             intent.putExtra("UserName",username);
                                             intent.putExtra("Email",usermail);
+                                            intent.putExtra("Uid",userid);
                                             startActivity(intent);
                                         }
 

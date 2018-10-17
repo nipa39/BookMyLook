@@ -61,7 +61,11 @@
             android:value="AIzaSyBYVj8B54cMZi97ZHQAcS64-t-RvyjCjF8" />
 
         <activity android:name=".MapsActivity" />
-        <activity android:name=".MyAddress"></activity>
+        <activity android:name=".MyAddress" />
+        <activity android:name=".MyUserProfile" />
+        <activity android:name=".MyUserBookings" />
+        <activity android:name=".SharePhoto" />
+        <activity android:name=".AppInfo"></activity>
     </application>
 
 </manifest>

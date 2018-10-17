@@ -26,7 +26,7 @@ public class Retrieve extends AppCompatActivity {
 
     ListView listView;
     SearchView sv;
-    String username,mail;
+    String username,mail,userid;
     FirebaseDatabase database;
     DatabaseReference ref;
     ArrayList<String> list;
@@ -42,8 +42,8 @@ public class Retrieve extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrieve);
 
-        share=findViewById(R.id.txtshare);
-        share.setOnClickListener(new View.OnClickListener() {
+    //    share=findViewById(R.id.txtshare);
+      /*  share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), UserPicUpload.class);
@@ -54,10 +54,12 @@ public class Retrieve extends AppCompatActivity {
                 // Toast.makeText(Retrieve.this, id1, Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
-        });
+        });*/
 
         username=getIntent().getStringExtra("UserName");
         mail=getIntent().getStringExtra("Email");
+        userid=getIntent().getStringExtra("Uid");
+
 
 
         nav=findViewById(R.id.nav);
@@ -67,7 +69,8 @@ public class Retrieve extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), UserNav.class);
                 //  Toast.makeText(UserLoginPg.this,username, Toast.LENGTH_SHORT).show();
                 intent.putExtra("UserName",username);
-
+                intent.putExtra("Uid",userid);
+                intent.putExtra("EXTRA_SESSION_ID", id1);
                // intent.putExtra("Uid",username);
                 intent.putExtra("Email",mail);
                 startActivity(intent);

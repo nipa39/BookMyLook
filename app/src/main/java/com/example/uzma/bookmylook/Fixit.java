@@ -16,25 +16,52 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Fixit extends AppCompatActivity {
 
     FirebaseAuth mAuth;
+    User user;
     private DatabaseReference mDatabaseRef;
     private DatabaseReference custHistory;
+    private DatabaseReference custBookings;
+    private DatabaseReference ref;
 
     Button b1,logout;
     String menu,category,s="",date,parlourname;
     EditText t0,t1,t2,t3,t4,t5,t6,t7;
     Spinner sp;
     ArrayAdapter<String> adapter;
-    String username,mail;
+    String username,mail,parlourmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fixit);
+
+        user=new User();
+
+        ref=FirebaseDatabase.getInstance().getReference("ServiceProviders");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    user = data.getValue(User.class);
+                    if (parlourname.equals(user.getName())) {
+                        parlourmail = user.getEmail();
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         parlourname=getIntent().getStringExtra("EXTRA_SESSION_ID");
         username=getIntent().getStringExtra("UserName");
@@ -47,6 +74,8 @@ public class Fixit extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         mDatabaseRef= FirebaseDatabase.getInstance().getReference("Customers").child(parlourname);
         custHistory= FirebaseDatabase.getInstance().getReference("CustHistory").child(parlourname);
+        custBookings=FirebaseDatabase.getInstance().getReference("Bookings").child(username);
+
         logout=findViewById(R.id.logout);
 
         t0=findViewById(R.id.pname);
@@ -129,8 +158,12 @@ public class Fixit extends AppCompatActivity {
 
                 mDatabaseRef.child(uploadId).setValue(customers);
                 custHistory.child(uploadId).setValue(customers);
+                custBookings.child(uploadId).setValue(customers);
 
-                Toast.makeText(Fixit.this, "Booking Placed!", Toast.LENGTH_SHORT).show();
+                SendMail sm = new SendMail(Fixit.this, parlourmail," subject", "New Booking Placed.Please check it!", "Your  appointment request is in queue!", "Your booking  is placed!");
+                sm.execute();
+
+              //  Toast.makeText(Fixit.this, "Booking Placed!", Toast.LENGTH_SHORT).show();
 
               //  FirebaseDatabase.getInstance().getReference("Customers").child(parlourname).push().getKey()
 
